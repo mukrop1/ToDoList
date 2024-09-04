@@ -13,6 +13,21 @@ class TaskCreate(TaskBase):
 # Схема для отображения задачи
 class Task(TaskBase):
     id: int
+    owner_id: int
+
+    class Config:
+        from_attributes = True
+
+class UserBase(BaseModel):
+    email: str
+
+class UserCreate(UserBase):
+    password: str
+
+class User(UserBase):
+    id: int
+    is_active: bool
+    # items: list[Task] = []
 
     class Config:
         from_attributes = True
